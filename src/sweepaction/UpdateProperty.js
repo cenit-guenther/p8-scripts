@@ -3,6 +3,8 @@ importPackage(Packages.com.filenet.api.constants);
 importPackage(Packages.com.filenet.api.exception);
 importPackage(Packages.com.filenet.api.sweep);
 importPackage(Packages.com.filenet.api.engine);
+importPackage(Packages.com.filenet.api.admin);
+
 
 // Implement for custom job and queue sweeps.
 function onSweep (sweepObject, sweepItems)
@@ -29,7 +31,7 @@ function onSweep (sweepObject, sweepItems)
 
        try 
        {
-          var queueItem = QueueItem (item);
+          var queueItem = EventQueueItem (item);
           queueItem.getProperties().putValue("RetryCount", 5);
           queueItem.save(RefreshMode.NO_REFRESH);
 
