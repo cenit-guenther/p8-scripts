@@ -9,9 +9,7 @@ function onSweep (sweepObject, sweepItems)
 {	
     var hcc = HandlerCallContext.getInstance();
     hcc.traceDetail("Entering CustomSweepHandler.onSweep");
-    hcc.traceDetail("sweepObject = " 
-              + sweepObject.getProperties().getIdValue(PropertyNames.ID)
-              + "sweepItems.length = " + sweepItems.length);
+    hcc.traceDetail("sweepObject = "  + sweepObject.getProperties().getIdValue(PropertyNames.ID) + "sweepItems.length = " + sweepItems.length);
 
     // Iterate the sweepItems and change the class.
     ii = 0;
@@ -22,8 +20,7 @@ function onSweep (sweepObject, sweepItems)
        // If it is, clean up and return control to the server.
        if (hcc != null && hcc.isShuttingDown())
        { 
-          throw new EngineRuntimeException(ExceptionCode.E_BACKGROUND_TASK_TERMINATED,        
-            this.constructor.name + " is terminating prematurely because the server is shutting down");
+          throw new EngineRuntimeException(ExceptionCode.E_BACKGROUND_TASK_TERMINATED, this.constructor.name + " is terminating prematurely because the server is shutting down");
        }
 
        var item = sweepItems[ii].getTarget();
@@ -33,18 +30,16 @@ function onSweep (sweepObject, sweepItems)
        try 
        {
           var queueItem = QueueItem (item);
-          queueItem.getProperties().putValue('RetryCount', 5);
+          queueItem.getProperties().putValue("RetryCount", 5);
           queueItem.save(RefreshMode.NO_REFRESH);
 
           // Set outcome to PROCESSED if item processed successfully.
-          sweepItems[ii].setOutcome(SweepItemOutcome.PROCESSED,
-                "item processed by " + this.constructor.name);
+          sweepItems[ii].setOutcome(SweepItemOutcome.PROCESSED, "item processed by " + this.constructor.name);
        }
        // Set failure status on objects that fail to process.
        catch (ioe)
        {
-          sweepItems[ii].setOutcome(SweepItemOutcome.FAILED, "CustomSweepHandler: " +
-              ioe.rhinoException.getMessage());
+          sweepItems[ii].setOutcome(SweepItemOutcome.FAILED, "CustomSweepHandler: " + ioe.rhinoException.getMessage());
        }
     }
     hcc.traceDetail("Exiting CustomSweepHandler.onSweep");
