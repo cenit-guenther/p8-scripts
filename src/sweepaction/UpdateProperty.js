@@ -4,6 +4,7 @@ importPackage(Packages.com.filenet.api.exception);
 importPackage(Packages.com.filenet.api.sweep);
 importPackage(Packages.com.filenet.api.engine);
 importPackage(Packages.com.filenet.api.admin);
+importPackage(Packages.java.lang);
 
 
 // Implement for custom job and queue sweeps.
