@@ -24,8 +24,8 @@ function onSweep (sweepObject, sweepItems)
        }
 
        var item = sweepItems[ii].getTarget();
-       String msg = "sweepItems[" + ii + "]= " + item.getProperties().getIdValue("ID");
-       hcc.traceDetail(msg);
+       //String msg = "sweepItems[" + ii + "]= " + item.getProperties().getIdValue("ID");
+       //hcc.traceDetail(msg);
 
        try 
        {
