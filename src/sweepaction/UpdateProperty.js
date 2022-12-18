@@ -33,7 +33,7 @@ function onSweep (sweepObject, sweepItems)
        try 
        {
           var queueItem = QueueItem (item);
-          queueItem.getProperties().putValue('RetryCount', 5)
+          queueItem.getProperties().putValue('RetryCount', 5);
           queueItem.save(RefreshMode.NO_REFRESH);
 
           // Set outcome to PROCESSED if item processed successfully.
