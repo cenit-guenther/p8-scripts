@@ -1,4 +1,6 @@
 importPackage(Packages.java.lang);
+importPackage(Packages.com.filenet.api.constants);
+
 
 function OnCustomProcess (CEObject)
 {
